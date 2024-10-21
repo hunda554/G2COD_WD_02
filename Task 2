@@ -1,0 +1,22 @@
+import requests
+from bs4 import BeautifulSoup
+
+def scrape_headlines(url):
+    
+    response = requests.get(url)
+    if res:ponse.status_code != 200:
+        print("Failed to retrieve the webpage.")
+        return
+    
+  
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    headlines = soup.find_all('h2') 
+
+    
+    for idx, headline in enumerate(headlines, 1):
+        print(f"{idx}. {headline.get_text()}")
+
+if __name__ == "__main__":
+    url = 'https://eg.com' #we use the real url of the website
+    scrape_headlines(url)
